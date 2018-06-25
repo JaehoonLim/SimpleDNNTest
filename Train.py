@@ -188,7 +188,6 @@ def train_and_validate(sigfile, bkgfile=None, bkgflag=None, varlist=None, traino
         , kernel_initializer='glorot_uniform'))
 
     optim_adagrad = keras.optimizers.adagrad(lr=0.01)
-    optim_adam = keras.optimizers.adam(lr=0.001)
     classifier.compile(optimizer=optim_adagrad, loss='categorical_crossentropy', metrics=['accuracy'])
 
     # save weights
@@ -390,16 +389,16 @@ def train_and_validate(sigfile, bkgfile=None, bkgflag=None, varlist=None, traino
 
 if __name__=="__main__":
 
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser()
     parser.add_argument('I', type=str,help='\'I\'nput (signal) numpy file path')
     parser.add_argument('-b', type=str,help='\'B\'ackground numpy file path')
     parser.add_argument('-f', type=str,help='boolean \'F\'lag variable for signal & background (signal=true)')
-    parser.add_argument('-a', type=int,default=[50,10],nargs='+',help='DNN \'A\'rchitecture')
-    parser.add_argument('-p', type=float,default=25.0,help='\'P\'ersent of validation sample')
-    parser.add_argument('-w', type=str,default='./TrainResult/',help='\'W\'eight file path')
+    parser.add_argument('-a', type=int,default=[50,10],nargs='+',help='NN \'A\'rchitecture (default=[50,10])')
+    parser.add_argument('-p', type=float,default=25.0,help='\'P\'ersent of validation sample (default=25.0)')
+    parser.add_argument('-w', type=str,default='./TrainResult/',help='\'W\'eight file path (default=\'./TrainResult/\')')
     parser.add_argument('-v', type=str,nargs='+',help='\'V\'ariable list (default=all variables)')
-    parser.add_argument('-e', type=int,default=100,help='\'E\'poch')
-    parser.add_argument('-r', type=int,default=11111111,help='\'R\'andom seed number')
+    parser.add_argument('-e', type=int,default=100,help='\'E\'poch (default=100)')
+    parser.add_argument('-r', type=int,default=11111111,help='\'R\'andom seed number (default=11111111)')
     args = parser.parse_args()
 
     if args.b is None and args.f is None:
