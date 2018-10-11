@@ -19,6 +19,9 @@ from keras.models import Sequential
 from keras.layers import Dense, BatchNormalization
 from keras import regularizers
 from keras.callbacks import ModelCheckpoint, EarlyStopping
+from ROOT import PyConfig                                             #PyROOT hijacks command line arguments 
+PyConfig.IgnoreCommandLineOptions = True                              #PyROOT hijacks command line arguments
+from ROOT import gStyle, TCanvas, TH1D, TGraph, TLine, TLegend, TText #PyROOT hijacks command line arguments 
 
 def findcolumns(varlist, columnname):
     """
@@ -50,8 +53,6 @@ class LossHistory(keras.callbacks.Callback):
         self.val_losses.append(logs.get('val_loss'))
 
 def train_and_validate(sigfile, bkgfile=None, bkgflag=None, varlist=None, trainoutputdir="./TrainResult/", valid_persent=25, netarch=[50,10], rndseed=11111111, nruns=100, minibatchsize=128, retrain=False, DrawPlot=True, PrintLog=2):
-
-    from ROOT import gStyle, TCanvas, TH1D, TGraph, TLine, TLegend, TText #PyROOT hijacks command line arguments 
 
     # check signal file
     if not re.match('.*\.npy', sigfile):
