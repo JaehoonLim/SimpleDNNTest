@@ -15,10 +15,11 @@ from array import array
 import numpy as np
 import keras
 from Train import findcolumns
+from ROOT import PyConfig                     #PyROOT hijacks command line arguments 
+PyConfig.IgnoreCommandLineOptions = True      #PyROOT hijacks command line arguments
+from ROOT import TFile, TKey, TChain, TBranch #PyROOT hijacks command line arguments 
 
 def apply(inputrootfile, outputdirectory="./Output/", trainednetdir="./TrainResult/", treename=None):
-   
-    from ROOT import TFile, TKey, TChain, TBranch #PyROOT hijacks command line arguments 
 
     # read signal numpy arrays
     inputnpyfile = inputrootfile.replace('.root', '.npy')

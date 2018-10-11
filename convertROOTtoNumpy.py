@@ -13,10 +13,11 @@ import pickle
 import argparse
 from array import array
 import numpy as np
+from ROOT import PyConfig                     #PyROOT hijacks command line arguments 
+PyConfig.IgnoreCommandLineOptions = True      #PyROOT hijacks command line arguments
+from ROOT import TFile, TKey, TChain, TBranch #PyROOT hijacks command line arguments 
 
 def convertROOTtoNumpy(rootfile, treename=None, branchnamelist=None):
-
-    from ROOT import TFile, TKey, TChain, TBranch #PyROOT hijacks command line arguments 
 
     # set output files
     numpyfile = rootfile.replace('.root', '.npy')
