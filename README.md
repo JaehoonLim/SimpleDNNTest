@@ -1,6 +1,20 @@
 # SimpleDNNTest
-Simple package for DNN test with Keras
+This package will help whom using __ROOT__ Ntuple to run DNN test with __Keras__.  
+  
+- __Keras__ : https://keras.io  
+- __ROOT__ : https://root.cern.ch  
 
+# Acknowledge
+This work was suppored by Global Science experimental Data hub Center (GSDC) in Korea Institute of Science and Technology Information (KISTI).
+
+# 0. Enviroment
+
+- __ROOT__ >= 5.34 (include __ROOT 6__)  
+- __Python__ >= 2.7 (include __Python 3__)  
+- __TensorFlow__ >= 1.4.0 rc0  
+
+And __h5py__, __matplotlib__  
+  
 # 1. convertROOTtoNumpy.py  
 ```
 usage: convertROOTtoNumpy.py [-h] [-t T] [-b B [B ...]] I  
@@ -15,9 +29,17 @@ optional arguments:
 ```    
 __ex)__
 ```
+python mkSampleRootFile.py  
 python convertROOTtoNumpy.py samples/Signal.root -t TEST_tree -b TEST_val1 TEST_val2 TEST_val3  
 ```
 
+For __TensorFlow__, we will convert __ROOT__ Ntuple file to __Numpy__ file.  
+__convertROOTtoNumpy.py__ needs __ROOT__ Ntuple file as input file. When __convertROOTtoNumpy.py__ run finished, it will give you 2 kinds of output files.  
+First one, __Numpy__ array file(__.npy__), contains varialbes form __ROOT__ Ntuple for __TensorFlow__. Second one, __Python pickle__ file(__.pkl__), contains the name of varialbes with column index. You can check the variable name of numpy array by using this pickle file.  
+  
+without '-t' option, __convertROOTtoNumpy.py__ will automatically find a tree in __ROOT__ Ntuple.  
+without '-b' option, all branches in the tree will be converted to __Numpy__ array file.  
+  
 # 2. Train.py  
 ```
 usage: Train.py [-h] [-b B] [-f F] [-a A [A ...]] [-p P] [-w W] [-v V [V ...]] [-e E] [-r R] I  
@@ -45,6 +67,10 @@ or
 ```
 python Train.py samples/Allsample.npy -f isSignal -a 20 10 -p 40.0 -w TEST_weight -v TEST_val1 TEST_val2 TEST_val3  
 ```  
+
+
+
+
 
 # 3. Apply.py  
 ```
