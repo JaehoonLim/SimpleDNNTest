@@ -68,9 +68,7 @@ or
 python Train.py samples/Allsample.npy -f isSignal -a 20 10 -p 40.0 -w TEST_weight -v TEST_val1 TEST_val2 TEST_val3  
 ```  
   
-__Train.py__ study characteristics of signal what we want and background what we don't want.  
-  
-As you can see on example, input can be 2 __NumPy__ files or 1 __NumPy__ file with boolean flag which signal is True.  
+__Train.py__ study characteristics of signal what we want and background what we don't want. As you can see on example, input can be 2 __NumPy__ files, one for signal and the other for background, or 1 __NumPy__ file with boolean flag which signal is True.  
   
 __Train.py__ is using the Multi-Layer Perceptron (MLP) model. You can set the MLP model, the number of layers and the number of nodes for each layer, by '-a' option. '-a 20 10' means 2 layers with 20 and 10 nodes for first and second layer, respectively.  
   
@@ -144,9 +142,7 @@ __without ‘-i’ option__
 python runDNN.py  
 ```
   
-__runDNN.py__ will help you to run all test step above at once.  
-  
-__runDNN.py__ will run __convertROOTtoNumpy.py__, __Train.py__, and __Apply.py__ sequentailly.  
+__runDNN.py__ will help you to run all test step above at once. __runDNN.py__ will run __convertROOTtoNumpy.py__, __Train.py__, and __Apply.py__ sequentailly.  
   
 As you can see on example with '-i' option, you have to give all options at once.  
 without option, __runDNN.py__ will read the options form __TestDNN__ funcion inside __runDNN.py__.  
