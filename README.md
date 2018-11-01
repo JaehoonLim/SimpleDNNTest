@@ -69,7 +69,7 @@ python Train.py samples/Allsample.npy -f isSignal -a 20 10 -p 40.0 -w TEST_weigh
 ```  
   
 __Train.py__ study characteristics of signal what we want and background what we don't want.  
-As you can see on example, input can be 2 __NumPy__ files or 1 __NumPy__ file with boolean flag witch signal is True.  
+As you can see on example, input can be 2 __NumPy__ files or 1 __NumPy__ file with boolean flag which signal is True.  
 __Train.py__ is using the Multi-Layer Perceptron (MLP) model. You can set the MLP model, the number of layers and the number of nodes for each layer, by '-a' option. '-a 20 10' means 2 layers with 20 and 10 nodes for first and second layer, respectively.  
 Before start training, __Train.py__ will divide samples to test sample and validation sample. Test sample will be used to training, and validation sample will be used to check over-training. Base on validation sample's accuracy, training will be stoped automatically for prevent over-training.  
 After training, __Train.py__ will give you 3 plots and train weight file. With __Loss__ plot, you can check loss function results of test sample and validation sample. With __Over-Train Check__ plot, you can check DNN discriminator values of each samples. With __Receiver Operating Characteristic (ROC) Curve__ plot, you can check signal efficieny and background rejection rate.  
@@ -92,7 +92,10 @@ __ex)__
 ```
 python Apply.py samples/Signal.root -o TEST_output -w TEST_weight -t TEST_tree  
 ```
-
+  
+With train weight file form __Train.py__, __Apply.py__ will start last phase of DNN test.  
+Based on training result, __Apply.py__ will give you a __ROOT__ Ntulple file same as you input with DNN test result. You can see the variable __'DNNValue'__ on output __ROOT__ file.  
+  
 # 4. runDNN.py  
 ```
 usage: runDNN.py [-h] [-i I] [-b B] [-f F] [-t T] [-v V [V ...]] [-o O] [-w W] [-a A [A ...]] [-p P] [-e E] [-r R]  
