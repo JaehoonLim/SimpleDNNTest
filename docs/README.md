@@ -1,5 +1,7 @@
 # SimpleDNNTest
 This package will help whom using __ROOT__ Ntuple to run DNN test with __Keras__.  
+README : https://jaehoonlim.github.io/SimpleDNNTest/  
+
   
 - __ROOT__ : https://root.cern.ch  
 - __Keras__ : https://keras.io  
