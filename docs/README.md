@@ -3,7 +3,7 @@ This package will help whom using __ROOT__ Ntuple to run DNN test with __Keras__
   
 - __ROOT__ : https://root.cern.ch  
 - __Keras__ : https://keras.io  
-  
+
 # Acknowledge
 This work was suppored by Global Science experimental Data hub Center (GSDC) in Korea Institute of Science and Technology Information (KISTI).
 
@@ -14,7 +14,7 @@ This work was suppored by Global Science experimental Data hub Center (GSDC) in 
 - __TensorFlow__ >= 1.4.0 rc0  
 
 And __h5py__, __matplotlib__  
-  
+
 # 1. convertROOTtoNumpy.py  
 ```
 usage: convertROOTtoNumpy.py [-h] [-t T] [-b B [B ...]] I  
@@ -39,7 +39,7 @@ __convertROOTtoNumpy.py__ needs __ROOT__ Ntuple file as input file. When __conve
   
 without '-t' option, __convertROOTtoNumpy.py__ will automatically find a tree in __ROOT__ Ntuple.  
 without '-b' option, all branches in the tree will be converted.  
-  
+
 # 2. Train.py  
 ```
 usage: Train.py [-h] [-b B] [-f F] [-a A [A ...]] [-p P] [-w W] [-v V [V ...]] [-e E] [-r R] I  
@@ -74,10 +74,23 @@ As you can see on example, input can be 2 __NumPy__ files or 1 __NumPy__ file wi
   
 __Train.py__ is using the Multi-Layer Perceptron (MLP) model. You can set the MLP model, the number of layers and the number of nodes for each layer, by '-a' option. '-a 20 10' means 2 layers with 20 and 10 nodes for first and second layer, respectively.  
   
+__Details of MLP Model__
+- Activation for hidden layer : ReLU  
+- Activation for output layer : softmax 
+- Loss function : categorical_crossentropy  
+- Optimizer : AdaGrad  
+- Metrics : Accuracy  
+  
 Before start training, __Train.py__ will divide samples to test sample and validation sample. Test sample will be used to training, and validation sample will be used to check over-training. Base on validation sample's accuracy, training will be stoped automatically for prevent over-training.  
   
-After training, __Train.py__ will give you 3 plots and train weight file. With __Loss__ plot, you can check loss function results of test sample and validation sample. With __Over-Train Check__ plot, you can check DNN discriminator values of each samples. With __Receiver Operating Characteristic (ROC) Curve__ plot, you can check signal efficieny and background rejection rate.  
-　　
+After training, __Train.py__ will give you 3 plots and train weight file. 
+  
+With __Loss__ plot, you can check loss function results of test sample and validation sample.  
+  
+With __Over-Train Check__ plot, you can check DNN discriminator values of each samples.  
+  
+With __Receiver Operating Characteristic (ROC) Curve__ plot, you can check signal efficieny and background rejection rate. On plot, each number means rate where signal efficieny or background rejection rate is 90 % and 95 %.  
+
 # 3. Apply.py  
 ```
 usage: Apply.py [-h] [-o O] [-w W] [-t T] I  
@@ -99,7 +112,7 @@ python Apply.py samples/Signal.root -o TEST_output -w TEST_weight -t TEST_tree
   
 With train weight file form __Train.py__, __Apply.py__ will start last phase of DNN test.  
   
-Based on training result, __Apply.py__ will give you a __ROOT__ Ntulple file same as you input with DNN test result. You can see the variable __'DNNValue'__ on output __ROOT__ file.  
+Based on training result, __Apply.py__ will give you a result __ROOT__ Ntuple file same as you input with DNN test result. You can see the variable __'DNNValue'__ on output __ROOT__ file.  
   
 # 4. runDNN.py  
 ```
@@ -133,4 +146,7 @@ python runDNN.py
   
 __runDNN.py__ will help you to run all test step above at once.  
   
-__runDNN.py__ 
+__runDNN.py__ will run __convertROOTtoNumpy.py__, __Train.py__, and __Apply.py__ sequentailly.  
+  
+As you can see on example with '-i' option, you have to give all options at once.  
+without option, __runDNN.py__ will read the options form __TestDNN__ funcion inside __runDNN.py__.  
