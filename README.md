@@ -34,6 +34,7 @@ python convertROOTtoNumpy.py samples/Signal.root -t TEST_tree -b TEST_val1 TEST_
 ```
 
 For __TensorFlow__, we will convert __ROOT__ Ntuple file to __NumPy__ file.  
+  
 __convertROOTtoNumpy.py__ needs __ROOT__ Ntuple file as input file. When __convertROOTtoNumpy.py__ run finished, it will give you 2 kinds of output files.  
 First one, __NumPy__ array file(__.npy__), contains varialbes form __ROOT__ Ntuple for __TensorFlow__. Second one, __Python pickle__ file(__.pkl__), contains the name of varialbes with column index. You can check the variable name of __NumPy__ array by using this pickle file.  
   
@@ -69,6 +70,7 @@ python Train.py samples/Allsample.npy -f isSignal -a 20 10 -p 40.0 -w TEST_weigh
 ```  
   
 __Train.py__ study characteristics of signal what we want and background what we don't want.  
+  
 As you can see on example, input can be 2 __NumPy__ files or 1 __NumPy__ file with boolean flag which signal is True.  
 __Train.py__ is using the Multi-Layer Perceptron (MLP) model. You can set the MLP model, the number of layers and the number of nodes for each layer, by '-a' option. '-a 20 10' means 2 layers with 20 and 10 nodes for first and second layer, respectively.  
 Before start training, __Train.py__ will divide samples to test sample and validation sample. Test sample will be used to training, and validation sample will be used to check over-training. Base on validation sample's accuracy, training will be stoped automatically for prevent over-training.  
@@ -94,6 +96,7 @@ python Apply.py samples/Signal.root -o TEST_output -w TEST_weight -t TEST_tree
 ```
   
 With train weight file form __Train.py__, __Apply.py__ will start last phase of DNN test.  
+  
 Based on training result, __Apply.py__ will give you a __ROOT__ Ntulple file same as you input with DNN test result. You can see the variable __'DNNValue'__ on output __ROOT__ file.  
   
 # 4. runDNN.py  
@@ -125,3 +128,7 @@ __without ‘-i’ option__
 ```
 python runDNN.py  
 ```
+  
+__runDNN.py__ will help you to run all test step above at once.  
+  
+__runDNN.py__ 
