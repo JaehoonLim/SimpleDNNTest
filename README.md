@@ -7,7 +7,7 @@ This package will help whom using __ROOT__ Ntuple to run DNN test with __Keras__
 # Acknowledge
 This work was suppored by Global Science experimental Data hub Center (GSDC) in Korea Institute of Science and Technology Information (KISTI).
 
-# 0. Enviroment
+# 0. Requirement
 
 - __ROOT__ >= 5.34 (include __ROOT 6__)  
 - __Python__ >= 2.7 (include __Python 3__)  
