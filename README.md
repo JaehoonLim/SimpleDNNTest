@@ -33,7 +33,7 @@ python mkSampleRootFile.py
 python convertROOTtoNumpy.py samples/Signal.root -t TEST_tree -b TEST_val1 TEST_val2 TEST_val3  
 ```
 
-For __TensorFlow__, we will convert __ROOT__ Ntuple file to __NumPy__ file.  
+For __TensorFlow__, we will convert __ROOT__ Ntuple file to __NumPy__ array file.  
   
 __convertROOTtoNumpy.py__ needs __ROOT__ Ntuple file as input file. When __convertROOTtoNumpy.py__ run finished, it will give you 2 kinds of output files.  
 First one, __NumPy__ array file(__.npy__), contains varialbes you selected form __ROOT__ Ntuple for __TensorFlow__. Second one, __Python pickle__ file(__.pkl__), contains the name of varialbes with column index. You can check the variable name of __NumPy__ array by using this pickle file.  
