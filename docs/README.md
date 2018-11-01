@@ -83,10 +83,16 @@ Before start training, __Train.py__ will divide samples to test sample and valid
   
 After training, __Train.py__ will give you 3 plots and train weight file. 
   
+<P align="center"><img src="https://jaehoonlim.github.io/SimpleDNNTest/Loss.png" width="500"></P>   
+
 With __Loss__ plot, you can check loss function results of test sample and validation sample.  
-  
+
+<P align="center"><img src="https://jaehoonlim.github.io/SimpleDNNTest/OverTrain.png" width="500"></P>   
+
 With __Over-Train Check__ plot, you can check DNN discriminator values of each samples.  
-  
+
+<P align="center"><img src="https://jaehoonlim.github.io/SimpleDNNTest/ROC_curve.png" width="500"></P>   
+
 With __Receiver Operating Characteristic (ROC) Curve__ plot, you can check signal efficieny and background rejection rate. On plot, each number means rate where signal efficieny or background rejection rate is 90 % and 95 %.  
 
 # 3. Apply.py  
